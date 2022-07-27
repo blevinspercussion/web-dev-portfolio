@@ -24,7 +24,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem 3rem 2rem 2rem;
+    padding: 1rem 3rem 2rem 2rem;
     margin-bottom: -2rem;
 
 }
@@ -39,4 +39,19 @@ nav ul {
     list-style: none;
     width: 30vw;
     justify-content: space-around;
+}
+
+.about {
+    display: flex;
+    margin: 5vh 0 0 15vw;
+}
+
+.text {
+    max-width: 30vw;
+}
+
+.profile-pic {
+    margin-left: 10rem;
+    height: 75vh;
+    border-radius: 10%;
 }
