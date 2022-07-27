@@ -1,6 +1,6 @@
 :root {
     font-family: 'Source Code Pro', monospace;
-    font-size: px;
+    font-size: 18px;
 
     --darkest-blue: #0C0032;
     --dark-blue: #190061;
@@ -20,18 +20,18 @@ hr {
     border: 1px solid var(--blue);
 }
 
-
-
 nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem 5rem 2rem 5rem;
+    padding: 3rem 3rem 2rem 2rem;
+    margin-bottom: -2rem;
 
 }
 
 .logo {
     margin-right: auto;
+    width: 8rem;
 }
 
 nav ul {
