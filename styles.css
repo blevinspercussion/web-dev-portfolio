@@ -1,0 +1,42 @@
+:root {
+    font-family: 'Source Code Pro', monospace;
+    font-size: px;
+
+    --darkest-blue: #0C0032;
+    --dark-blue: #190061;
+    --blue: #240090;
+    --lighter-blue: #3500D3;
+    --dark-gray: #282828;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: black;
+}
+
+hr {
+    border: 1px solid var(--blue);
+}
+
+
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 5rem 2rem 5rem;
+
+}
+
+.logo {
+    margin-right: auto;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    width: 30vw;
+    justify-content: space-around;
+}
