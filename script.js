@@ -301,6 +301,6 @@ frontEndMockupsLink.addEventListener('click', (e) => {
     frontEndMockupsLink.classList.remove('inactive-link');
     frontEndMockupsLink.classList.add('active-link');
     projectCardsDiv.style.transform = 'translateX(-100vw)';
-    mockupCardsDiv.style.transform = 'translateY(-65vh)';
+    mockupCardsDiv.style.transform = 'translateY(-100%)';
 
 });
