@@ -74,6 +74,11 @@ nav ul {
     transition: 0.5s;
 }
 
+.sub-link {
+    cursor: pointer;
+    transition: 0.5s;
+}
+
 .active-link {
     text-decoration: underline;
     text-decoration-color: var(--lighter-blue);
@@ -87,6 +92,51 @@ nav ul {
     transition: 0.5s;
     text-decoration-color: black;
 }
+
+#projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#projects ul {
+    display: flex;
+    list-style: none;
+}
+
+#projects ul li {
+    margin: 0 5rem 0 5rem;
+}
+
+#project-cards {
+    display: flex;
+    margin-top: 10rem;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5rem 0 5rem;
+    flex-wrap: wrap;
+}
+
+.project-card-links {
+    margin-top: 1rem;
+}
+
+.project-card a {
+    margin: 0 2rem 0 2rem;
+}
+
+.project-image {
+    max-width: 20vw;
+    border-radius: 10%;
+    margin-top: 2rem;
+}
+
 
 @keyframes slidein {
     from {
