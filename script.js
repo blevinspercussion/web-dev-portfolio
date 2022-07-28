@@ -272,8 +272,9 @@ projectsLink.addEventListener('click', () => {
 });
 
 frontEndProjectsLink.addEventListener('click', () => {
-    projectsSection.appendChild(frontEndProjects);
-    showProjectsSection();
+    // projectsSection.classList.add('front-end-projects-offscreen');
+    // projectsSection.appendChild(frontEndProjects);
+    // showProjectsSection();
     frontEndProjects.classList.remove('front-end-projects-offscreen');
     frontEndProjects.classList.add('front-end-projects-onscreen');
     frontEndProjectsLink.classList.add('active-link');
@@ -287,5 +288,7 @@ frontEndMockupsLink.addEventListener('click', () => {
     frontEndMockupsLink.classList.add('active-link');
     frontEndProjectsLink.classList.remove('active-link');
     frontEndProjects.addEventListener('transitionend', () => frontEndProjects.remove());
+    frontEndProjects.addEventListener('transitionend', () => createMockupCards());
+    showProjectsSection();
 
 });
