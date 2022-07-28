@@ -110,7 +110,7 @@ const projectCardsDiv = document.createElement('div');
 
 // Add classes and IDs to 'front end projects' section 
 frontEndProjects.setAttribute('id', 'front-end-projects');
-frontEndProjects.classList.add('front-end-projects-onscreen');
+frontEndProjects.classList.add('front-end-projects-offscreen');
 projectCardsDiv.setAttribute('id', 'project-cards');
 
 // Add content to 'front end projects' elements 
@@ -120,7 +120,9 @@ frontEndProjectsText.textContent = 'The projects in this section were designed a
 projectsSection.appendChild(projectsNav);
 projectsNav.appendChild(frontEndProjectsLink);
 projectsNav.appendChild(frontEndMockupsLink);
-projectsSection.appendChild(projectCardsDiv);
+frontEndProjects.appendChild(frontEndProjectsText);
+projectsSection.appendChild(frontEndProjects);
+frontEndProjects.appendChild(projectCardsDiv);
 
 // Create project cards
 for (let project in projects) {
@@ -164,25 +166,12 @@ mainContent.appendChild(aboutSection);
 const sectionLinks = document.querySelectorAll('.section-link');
 
 
+removeChildren = (parent) => {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
 
-// Get DOM Elements
-
-// const aboutLink = document.getElementById('about-link');
-// const projectsLink = document.getElementById('projects-link');
-// const linksLink = document.getElementById('links-link');
-
-// const aboutSection = document.getElementById('about');
-
-// const sectionLinks = document.querySelectorAll('.link');
-
-// const frontEndProjectsLink = document.getElementById('front-end-projects-link');
-// const frontEndMockupsLink = document.getElementById('front-end-mockups-link');
-
-// const frontEndProjects = document.getElementById('front-end-projects');
-
-// const projectsSection = document.getElementById('projects');
-
-// DOM Functions 
 removeAboutSection = () => {
     aboutSection.remove();
 }
@@ -195,8 +184,18 @@ hideAboutSection = () => {
     aboutSection.removeEventListener('transitionend', removeAboutSection());
 }
 
+showAboutSection = () => {
+    mainContent.appendChild(aboutSection);
+}
+
 showProjectsSection = () => {
     mainContent.appendChild(projectsSection);
+    frontEndProjects.classList.remove('front-end-projects-offscreen');
+    frontEndProjects.classList.add('front-end-projects-onscreen');
+}
+
+hideProjectsSection = () => {
+    
 }
 
 
@@ -218,30 +217,14 @@ sectionLinks.forEach(link => {
 });
 
 aboutLink.addEventListener('click', () => {
+    removeChildren(mainContent);
     aboutSection.classList.remove('about-offscreen');
     aboutSection.classList.add('about-onscreen');
     aboutSection.style.visibility = 'visible';
+    showAboutSection();
 });
 
 projectsLink.addEventListener('click', () => {
-    hideAboutSection();
+    removeChildren(mainContent);
     showProjectsSection();
 });
-
-// linksLink.addEventListener('click', () => {
-//     removeAboutSection();
-// });
-
-// frontEndMockupsLink.addEventListener('click', () => {
-//     frontEndProjects.classList.remove('front-end-projects-onscreen');
-//     frontEndProjects.classList.add('front-end-projects-offscreen');
-//     frontEndProjects.addEventListener('transitionend', () => {
-//         frontEndProjects.remove();
-//     });
-// });
-
-// frontEndProjectsLink.addEventListener('click', () => {
-//     projects.appendChild(frontEndProjects);
-//     frontEndProjects.classList.remove('front-end-projects-offscreen');
-//     frontEndProjects.classList.add('front-end-projects-onscreen');
-// });

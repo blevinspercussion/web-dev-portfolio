@@ -98,6 +98,8 @@ nav ul {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    animation-duration: 1.5s;
+    animation-name: slidein;
 }
 
 #projects ul {
