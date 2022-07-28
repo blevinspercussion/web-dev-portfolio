@@ -169,6 +169,18 @@ nav ul {
     transition: visibility 0s 1s, opacity 1s linear;
 }
 
+.front-end-mockups-onscreen {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1.5s linear;
+}
+
+.front-end-mockups-offscreen {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 1s, opacity 1s linear;
+}
+
 
 @keyframes slidein {
     from {

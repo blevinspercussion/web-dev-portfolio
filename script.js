@@ -85,6 +85,8 @@ aboutText.appendChild(aboutParagraph);
 aboutSection.appendChild(aboutImageDiv);
 aboutImageDiv.appendChild(aboutImage);
 
+
+
 // Create DOM elements for 'projects' section
 const projectsSection = document.createElement('section');
 const projectsNav = document.createElement('ul');
@@ -124,43 +126,79 @@ frontEndProjects.appendChild(frontEndProjectsText);
 projectsSection.appendChild(frontEndProjects);
 frontEndProjects.appendChild(projectCardsDiv);
 
-// Create project cards
-for (let project in projects) {
-    // Create elements
-    const projectCardDiv = document.createElement('div');
-    const projectCardHeading = document.createElement('h3');
-    const projectCardImage = document.createElement('img');
-    const projectCardLinks = document.createElement('div');
-    const projectCardCodeLink = document.createElement('a');
-    const projectCardDemoLink = document.createElement('a');
-
-    // Add classes and IDs 
-    projectCardDiv.classList.add('project-card');
-    projectCardDiv.setAttribute('id', projects[project].id);
-    projectCardImage.classList.add('project-image');
-    projectCardLinks.classList.add('project-card-links');
-
-    // Add content to elements
-    projectCardHeading.textContent = projects[project].title;
-    projectCardImage.setAttribute('src', projects[project].image);
-    projectCardCodeLink.setAttribute('href', projects[project].codeUrl);
-    projectCardCodeLink.setAttribute('target', '_blank');
-    projectCardCodeLink.textContent = 'github';
-    projectCardDemoLink.setAttribute('href', projects[project].demoUrl);
-    projectCardDemoLink.setAttribute('target', '_blank');
-    projectCardDemoLink.textContent = 'live demo';
-
-    // Append elements
-    projectCardsDiv.appendChild(projectCardDiv);
-    projectCardDiv.appendChild(projectCardHeading);
-    projectCardDiv.appendChild(projectCardImage);
-    projectCardDiv.appendChild(projectCardLinks);
-    projectCardLinks.appendChild(projectCardCodeLink);
-    projectCardLinks.appendChild(projectCardDemoLink);
-
+const createProjectCards = () => {
+    for (let project in projects) {
+        // Create elements
+        const projectCardDiv = document.createElement('div');
+        const projectCardHeading = document.createElement('h3');
+        const projectCardImage = document.createElement('img');
+        const projectCardLinks = document.createElement('div');
+        const projectCardCodeLink = document.createElement('a');
+        const projectCardDemoLink = document.createElement('a');
+    
+        // Add classes and IDs 
+        projectCardDiv.classList.add('project-card');
+        projectCardDiv.setAttribute('id', projects[project].id);
+        projectCardImage.classList.add('project-image');
+        projectCardLinks.classList.add('project-card-links');
+    
+        // Add content to elements
+        projectCardHeading.textContent = projects[project].title;
+        projectCardImage.setAttribute('src', projects[project].image);
+        projectCardCodeLink.setAttribute('href', projects[project].codeUrl);
+        projectCardCodeLink.setAttribute('target', '_blank');
+        projectCardCodeLink.textContent = 'github';
+        projectCardDemoLink.setAttribute('href', projects[project].demoUrl);
+        projectCardDemoLink.setAttribute('target', '_blank');
+        projectCardDemoLink.textContent = 'live demo';
+    
+        // Append elements
+        projectCardsDiv.appendChild(projectCardDiv);
+        projectCardDiv.appendChild(projectCardHeading);
+        projectCardDiv.appendChild(projectCardImage);
+        projectCardDiv.appendChild(projectCardLinks);
+        projectCardLinks.appendChild(projectCardCodeLink);
+        projectCardLinks.appendChild(projectCardDemoLink);
+    
+    }
 }
 
-// Create mockup cards
+createMockupCards = () => {
+    for (let mockup in mockups) {
+        // Create elements
+        const mockupCardDiv = document.createElement('div');
+        const mockupCardHeading = document.createElement('h3');
+        const mockupCardImage = document.createElement('img');
+        const mockupCardLinks = document.createElement('div');
+        const mockupCardCodeLink = document.createElement('a');
+        const mockupCardDemoLink = document.createElement('a');
+    
+        // Add classes and IDs 
+        mockupCardDiv.classList.add('project-card');
+        mockupCardDiv.setAttribute('id', mockups[mockup].id);
+        mockupCardImage.classList.add('project-image');
+        mockupCardLinks.classList.add('project-card-links');
+    
+        // Add content to elements
+        mockupCardHeading.textContent = mockups[mockup].title;
+        mockupCardImage.setAttribute('src', mockups[mockup].image);
+        mockupCardCodeLink.setAttribute('href', mockups[mockup].codeUrl);
+        mockupCardCodeLink.setAttribute('target', '_blank');
+        mockupCardCodeLink.textContent = 'github';
+        mockupCardDemoLink.setAttribute('href', mockups[mockup].demoUrl);
+        mockupCardDemoLink.setAttribute('target', '_blank');
+        mockupCardDemoLink.textContent = 'live demo';
+    
+        // Append elements
+        projectCardsDiv.appendChild(mockupCardDiv);
+        mockupCardDiv.appendChild(mockupCardHeading);
+        mockupCardDiv.appendChild(mockupCardImage);
+        mockupCardDiv.appendChild(mockupCardLinks);
+        mockupCardLinks.appendChild(mockupCardCodeLink);
+        mockupCardLinks.appendChild(mockupCardDemoLink);
+    
+    }
+}
 
 mainContent.appendChild(aboutSection);
 
@@ -191,6 +229,10 @@ showAboutSection = () => {
 }
 
 showProjectsSection = () => {
+    if (!document.querySelector('.project-card')) {
+        createProjectCards();
+    }
+    // createProjectCards();
     mainContent.appendChild(projectsSection);
     frontEndProjects.classList.remove('front-end-projects-offscreen');
     frontEndProjects.classList.add('front-end-projects-onscreen');
@@ -229,7 +271,21 @@ projectsLink.addEventListener('click', () => {
     showProjectsSection();
 });
 
+frontEndProjectsLink.addEventListener('click', () => {
+    projectsSection.appendChild(frontEndProjects);
+    showProjectsSection();
+    frontEndProjects.classList.remove('front-end-projects-offscreen');
+    frontEndProjects.classList.add('front-end-projects-onscreen');
+    frontEndProjectsLink.classList.add('active-link');
+    frontEndMockupsLink.classList.remove('active-link');
+})
+
 frontEndMockupsLink.addEventListener('click', () => {
     frontEndProjects.classList.remove('front-end-projects-onscreen');
     frontEndProjects.classList.add('front-end-projects-offscreen');
+    frontEndMockupsLink.classList.remove('inactive-link');
+    frontEndMockupsLink.classList.add('active-link');
+    frontEndProjectsLink.classList.remove('active-link');
+    frontEndProjects.addEventListener('transitionend', () => frontEndProjects.remove());
+
 });
