@@ -29,6 +29,7 @@ const mockups = [
     {
         'title': 'intro section with dropdown menus',
         'image': './img/home-page-with-dropdowns.png',
+        'id': 'intro-section-with-dropdowns',
         'codeUrl': 'https://github.com/blevinspercussion/frontendmentor-intro-section-with-dropdown-menus',
         'demoUrl': 'https://blevinspercussion.github.io/frontendmentor-intro-section-with-dropdown-menus/',
         'about': '',
@@ -36,6 +37,7 @@ const mockups = [
     {
         'title': 'time tracking dashboard',
         'image': './img/time-tracking-dashboard.png',
+        'id': 'time-tracking-dashboard',
         'codeUrl': 'https://github.com/blevinspercussion/fem-time-tracking-dashboard-js',
         'demoUrl': 'https://blevinspercussion.github.io/fem-time-tracking-dashboard-js/',
         'about': '',
@@ -43,6 +45,7 @@ const mockups = [
     {
         'title': 'e-commerce main page',
         'image': './img/e-commerce-main-page.png',
+        'id': 'ecommerce-main-page',
         'codeUrl': 'https://github.com/blevinspercussion/fem-ecommerce-main-page',
         'demoUrl': 'https://blevinspercussion.github.io/fem-ecommerce-main-page/',
         'about': '',
@@ -54,6 +57,8 @@ const mainContent = document.getElementById('main-content');
 const aboutLink = document.getElementById('about-link');
 const projectsLink = document.getElementById('projects-link');
 const linksLink = document.getElementById('links-link');
+
+
 
 // Create DOM Elements for 'about' section
 
@@ -109,11 +114,13 @@ frontEndMockupsLink.textContent = 'front end mockups';
 const frontEndProjects = document.createElement('div');
 const frontEndProjectsText = document.createElement('p');
 const projectCardsDiv = document.createElement('div');
+const mockupCardsDiv = document.createElement('div');
 
 // Add classes and IDs to 'front end projects' section 
 frontEndProjects.setAttribute('id', 'front-end-projects');
 frontEndProjects.classList.add('front-end-projects-offscreen');
 projectCardsDiv.setAttribute('id', 'project-cards');
+mockupCardsDiv.setAttribute('id', 'mockup-cards');
 
 // Add content to 'front end projects' elements 
 frontEndProjectsText.textContent = 'The projects in this section were designed and coded by me, from conception to completion.'
@@ -125,6 +132,7 @@ projectsNav.appendChild(frontEndMockupsLink);
 frontEndProjects.appendChild(frontEndProjectsText);
 projectsSection.appendChild(frontEndProjects);
 frontEndProjects.appendChild(projectCardsDiv);
+frontEndProjects.appendChild(mockupCardsDiv);
 
 const createProjectCards = () => {
     for (let project in projects) {
@@ -190,7 +198,7 @@ createMockupCards = () => {
         mockupCardDemoLink.textContent = 'live demo';
     
         // Append elements
-        projectCardsDiv.appendChild(mockupCardDiv);
+        mockupCardsDiv.appendChild(mockupCardDiv);
         mockupCardDiv.appendChild(mockupCardHeading);
         mockupCardDiv.appendChild(mockupCardImage);
         mockupCardDiv.appendChild(mockupCardLinks);
@@ -199,6 +207,9 @@ createMockupCards = () => {
     
     }
 }
+
+createProjectCards();
+createMockupCards();
 
 mainContent.appendChild(aboutSection);
 
@@ -229,10 +240,6 @@ showAboutSection = () => {
 }
 
 showProjectsSection = () => {
-    if (!document.querySelector('.project-card')) {
-        createProjectCards();
-    }
-    // createProjectCards();
     mainContent.appendChild(projectsSection);
     frontEndProjects.classList.remove('front-end-projects-offscreen');
     frontEndProjects.classList.add('front-end-projects-onscreen');
@@ -263,10 +270,12 @@ aboutLink.addEventListener('click', () => {
     aboutSection.classList.remove('about-offscreen');
     aboutSection.classList.add('about-onscreen');
     aboutSection.style.visibility = 'visible';
+    projectsSection.style.visibility = 'hidden';
     showAboutSection();
 });
 
 projectsLink.addEventListener('click', () => {
+    projectsSection.style.visibility = 'visible';
     removeChildren(mainContent);
     showProjectsSection();
 });
@@ -275,20 +284,23 @@ frontEndProjectsLink.addEventListener('click', () => {
     // projectsSection.classList.add('front-end-projects-offscreen');
     // projectsSection.appendChild(frontEndProjects);
     // showProjectsSection();
-    frontEndProjects.classList.remove('front-end-projects-offscreen');
-    frontEndProjects.classList.add('front-end-projects-onscreen');
+    // projectsSection.style.visibility = 'visible';
+    // frontEndProjects.style.visibility = 'visible';
+    // frontEndProjects.classList.remove('front-end-projects-offscreen');
+    // frontEndProjects.classList.add('front-end-projects-onscreen');
+    // frontEndProjectsLink.classList.add('active-link');
+    // frontEndMockupsLink.classList.remove('active-link');
     frontEndProjectsLink.classList.add('active-link');
     frontEndMockupsLink.classList.remove('active-link');
+    projectCardsDiv.style.transform = 'translateX(0vw)';
+    mockupCardsDiv.style.transform = 'translateY(65vh)';
 })
 
-frontEndMockupsLink.addEventListener('click', () => {
-    frontEndProjects.classList.remove('front-end-projects-onscreen');
-    frontEndProjects.classList.add('front-end-projects-offscreen');
+frontEndMockupsLink.addEventListener('click', (e) => {
+    frontEndProjectsLink.classList.remove('active-link');
     frontEndMockupsLink.classList.remove('inactive-link');
     frontEndMockupsLink.classList.add('active-link');
-    frontEndProjectsLink.classList.remove('active-link');
-    frontEndProjects.addEventListener('transitionend', () => frontEndProjects.remove());
-    frontEndProjects.addEventListener('transitionend', () => createMockupCards());
-    showProjectsSection();
+    projectCardsDiv.style.transform = 'translateX(-100vw)';
+    mockupCardsDiv.style.transform = 'translateY(-65vh)';
 
 });

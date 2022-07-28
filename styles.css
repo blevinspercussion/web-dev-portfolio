@@ -114,6 +114,15 @@ nav ul {
 #project-cards {
     display: flex;
     margin-top: 5rem;
+    position: relative;
+    transition: 1.0s;
+}
+
+#mockup-cards {
+    display: flex;
+    margin-top: 5rem;
+    transition: 1.0s;
+    margin-top: 25vh;
 }
 
 .project-card {
@@ -155,7 +164,9 @@ nav ul {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
+
 
 .front-end-projects-onscreen {
     visibility: visible;
