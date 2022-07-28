@@ -8,24 +8,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js" defer></script>
     <title>Adam Blevins</title>
 </head>
 <body>
     <nav class="nav">
         <img class="logo" src="./img/adam b codes-logos_transparent.png" />
         <ul>
-            <li><a>about</a></li>
-            <li><a>projects</a></li>
-            <li><a>links</a></li>
+            <li class="link active-link" id="about-link">about</li>
+            <li class="link inactive-link" id="projects-link">projects</li>
+            <li class="link inactive-link" id="links-link">links</li>
         </ul>
     </nav>
     <hr />
 
-    <section class="about">
+    <section id="about" class="about-onscreen">
         <div class="text">
             <h1>Welcome!</h1>
             <h3>My name is Adam Blevins and I am a front end web developer</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo beatae 
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo beatae 
                 incidunt amet eos cum dignissimos quam modi maiores quisquam, consequatur 
                 blanditiis ipsam voluptatum debitis reprehenderit facere, molestiae 
                 iste ipsum dolor deserunt ab. Mollitia architecto asperiores quisquam. 
@@ -37,13 +39,13 @@
             <img class="profile-pic" src="./img/cobra-kai.jpg"/>
         </div>
     </section>
-
+<!-- 
     <section class="projects">
 
     </section>
 
     <section class="links">
-        
-    </section>
+
+    </section> -->
 </body>
 </html>
