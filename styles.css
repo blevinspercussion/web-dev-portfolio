@@ -111,7 +111,7 @@ nav ul {
 
 #project-cards {
     display: flex;
-    margin-top: 10rem;
+    margin-top: 5rem;
 }
 
 .project-card {
@@ -129,12 +129,42 @@ nav ul {
 
 .project-card a {
     margin: 0 2rem 0 2rem;
+    text-decoration: none;
+    color: white;
+    /* transition: 0.5s; */
+}
+
+.project-card a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--lighter-blue);
+    text-decoration-thickness: 4px;
+    text-underline-offset: 1rem;
+    /* transition: 0.5s;     */
 }
 
 .project-image {
     max-width: 20vw;
     border-radius: 10%;
     margin-top: 2rem;
+}
+
+#front-end-projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.front-end-projects-onscreen {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1.5s linear;
+}
+
+.front-end-projects-offscreen {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 1s, opacity 1s linear;
 }
 
 

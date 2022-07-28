@@ -8,6 +8,13 @@ const aboutSection = document.getElementById('about');
 
 const sectionLinks = document.querySelectorAll('.link');
 
+const frontEndProjectsLink = document.getElementById('front-end-projects-link');
+const frontEndMockupsLink = document.getElementById('front-end-mockups-link');
+
+const frontEndProjects = document.getElementById('front-end-projects');
+
+const projectsSection = document.getElementById('projects');
+
 // DOM Functions 
 
 removeAboutSection = () => {
@@ -38,12 +45,26 @@ aboutLink.addEventListener('click', () => {
     aboutSection.classList.remove('about-offscreen');
     aboutSection.classList.add('about-onscreen');
     aboutSection.style.visibility = 'visible';
-})
+});
 
 projectsLink.addEventListener('click', () => {
     removeAboutSection();
-})
+});
 
 linksLink.addEventListener('click', () => {
     removeAboutSection();
-})
+});
+
+frontEndMockupsLink.addEventListener('click', () => {
+    frontEndProjects.classList.remove('front-end-projects-onscreen');
+    frontEndProjects.classList.add('front-end-projects-offscreen');
+    frontEndProjects.addEventListener('transitionend', () => {
+        frontEndProjects.remove();
+    });
+});
+
+frontEndProjectsLink.addEventListener('click', () => {
+    projects.appendChild(frontEndProjects);
+    frontEndProjects.classList.remove('front-end-projects-offscreen');
+    frontEndProjects.classList.add('front-end-projects-onscreen');
+});
