@@ -113,16 +113,18 @@ nav ul {
 
 #project-cards {
     display: flex;
-    margin-top: -12rem;
-    position: absolute;
+    margin-top: -25vh;
+    position: relative;
     transition: 1.0s;
+    top: 30vh;
 }
 
 #mockup-cards {
     display: flex;
-    /* margin-top: 5rem; */
+    margin-top: 5rem;
+    position: relative;
     transition: 1.0s;
-    margin-top: 50vh;
+    top: 100rem;
 }
 
 .project-card {

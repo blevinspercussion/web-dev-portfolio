@@ -293,7 +293,7 @@ frontEndProjectsLink.addEventListener('click', () => {
     frontEndProjectsLink.classList.add('active-link');
     frontEndMockupsLink.classList.remove('active-link');
     projectCardsDiv.style.transform = 'translateX(0vw)';
-    mockupCardsDiv.style.transform = 'translateY(65vh)';
+    mockupCardsDiv.style.transform = 'translateY(50vh)';
 })
 
 frontEndMockupsLink.addEventListener('click', (e) => {
@@ -301,6 +301,5 @@ frontEndMockupsLink.addEventListener('click', (e) => {
     frontEndMockupsLink.classList.remove('inactive-link');
     frontEndMockupsLink.classList.add('active-link');
     projectCardsDiv.style.transform = 'translateX(-100vw)';
-    mockupCardsDiv.style.transform = 'translateY(-100%)';
-
+    mockupCardsDiv.style.transform = 'translateY(-105rem)';
 });
